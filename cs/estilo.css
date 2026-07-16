@@ -1,0 +1,129 @@
+/*VARIABLES Y CONFIGURACIÓN GLOBAL*/
+
+:root {
+  --bg-color: #0f172a; /* Fondo azul oscuro elegante */
+  --clock-bg: #1e293b; /* Fondo del reloj */
+  --clock-border: #475569; /* Borde del chasis del reloj */
+  --text-color: #f8fafc; /* Color de los números (blanco roto) */
+  --gold: #d97706; /* Color dorado premium (segundero) */
+  --emerald: #059669; /* Color verde esmeralda para el pivote central */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Evita barras de scroll accidentales */
+}
+
+/* Contenedor principal */
+.reloj-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estructura del reloj*/
+.reloj {
+  background-color: var(--clock-bg);
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  border: 8px solid var(--clock-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+/* Logo de Rolex */
+.reloj-logo {
+  width: 60px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 75px;
+  z-index: 2;
+  opacity: 0.85;
+}
+
+/* Sistema matemático para los 12 números */
+.numeros div {
+  position: absolute;
+  inset: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-color);
+  transform: rotate(calc(30deg * var(--i)));
+}
+
+.numeros div b {
+  display: inline-block;
+  /* Contrarrestamos la rotación para que los números se dibujen totalmente verticales */
+  transform: rotate(calc(-30deg * var(--i)));
+}
+
+/* Manecilla y pivote central*/
+.manecillas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Pivote central (el punto donde se unen las agujas) */
+.manecillas::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: var(--emerald);
+  border: 2px solid white;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 10; /* Siempre por encima de las agujas */
+}
+
+/* Configuración base para todas las manecillas */
+.manecillas div {
+  position: absolute;
+  background-color: var(--text-color);
+  left: 50%;
+  bottom: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Aguja de las Horas */
+.manecillas .horas {
+  width: 6px;
+  height: 85px;
+  z-index: 7;
+}
+
+/* Aguja de los Minutos */
+.manecillas .minutos {
+  width: 4px;
+  height: 120px;
+  z-index: 8;
+}
+
+/* Aguja de los Segundos (Dorada y más estilizada) */
+.manecillas .segundos {
+  width: 2px;
+  height: 135px;
+  background-color: var(--gold);
+  z-index: 9;
+}
