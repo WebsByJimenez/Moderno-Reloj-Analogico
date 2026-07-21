@@ -15,7 +15,8 @@ Un reloj analógico minimalista desarrollado con tecnologías web estándar (HTM
 - **CSS3:** Posicionamiento absoluto, transformaciones (`rotate`, `translate`), funciones matemáticas y variables de entorno.
 - **JavaScript (ES6+):** Manipulación del DOM mediante el objeto nativo `Date` y temporizadores optimizados.
 
-## 📦 Instalación y Uso Local
+🚀 Instalación y Uso Local
+No requiere instalación de dependencias ni servidores externos.
 
 ## 👤 Autor
 
